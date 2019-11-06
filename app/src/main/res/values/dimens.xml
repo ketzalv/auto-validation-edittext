@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default paddings -->
+    <dimen name="dimen_padding_min">2dp</dimen>
+    <dimen name="dimen_padding_small">4dp</dimen>
+    <dimen name="dimen_padding_medium">8dp</dimen>
+    <dimen name="dimen_padding_large">12dp</dimen>
+    <dimen name="dimen_padding_xl">18dp</dimen>
+    <!-- Common margins -->
+    <dimen name="dimen_margin_xl">32dp</dimen>
+    <dimen name="dimen_margin_large">16dp</dimen>
+    <dimen name="dimen_margin_medium">8dp</dimen>
+    <dimen name="dimen_margin_small">4dp</dimen>
+    <dimen name="dimen_margin_very_small">2dp</dimen>
+
+    <dimen name="dimen_font_small">12sp</dimen>
+    <dimen name="dimen_font_medium">14sp</dimen>
+    <dimen name="dimen_font_large">16sp</dimen>
+</resources>

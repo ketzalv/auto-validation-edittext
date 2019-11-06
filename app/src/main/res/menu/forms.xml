@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_login"
+        android:title="Login"
+        android:icon="@drawable/ic_person"/>
+    <item
+        android:id="@+id/nav_register"
+        android:title="Register"
+        android:icon="@drawable/ic_register"/>
+    <item
+        android:id="@+id/nav_form_1"
+        android:title="Form 1"
+        android:icon="@drawable/ic_form"
+        />
+</menu>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">validationedittext</string>
+    <string name="msg_empty_edittext">Empty Field</string>
 </resources>

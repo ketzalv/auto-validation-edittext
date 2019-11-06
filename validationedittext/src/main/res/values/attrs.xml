@@ -12,8 +12,8 @@
             <enum name="date"               value="7"/>
             <enum name="personName"         value="8"/>
             <enum name="numberCurrency"     value="9"/>
-            <enum name="numberCurrencyRounded" value="11"/>
             <enum name="curp"               value="10"/>
+            <enum name="numberCurrencyRounded" value="11"/>
         </attr>
         <attr name="autoValidate" format="boolean"/>
         <attr name="showErrorMessage" format="boolean"/>

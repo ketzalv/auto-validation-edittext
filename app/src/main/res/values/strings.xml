@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sample</string>
+    <string name="accept">Accept</string>
+    <string name="getdata">Data</string>
 </resources>
