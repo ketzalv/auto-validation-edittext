@@ -28,7 +28,7 @@
                 android:layout_marginStart="@dimen/dimen_margin_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.zobot.validationedittext.ValidationEditText
+                <io.github.ketzalv.validationedittext.ValidationEditText
                     android:id="@+id/edit_email"
                     style="@style/EditText.Validation"
                     android:hint="Email"
@@ -45,7 +45,7 @@
                 app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.zobot.validationedittext.ValidationEditText
+                <io.github.ketzalv.validationedittext.ValidationEditText
                     android:id="@+id/edit_password"
                     style="@style/EditText.Validation"
                     android:hint="Password"

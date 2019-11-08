@@ -45,7 +45,7 @@
                             app:layout_constraintTop_toTopOf="@id/text_address_title"
                             app:layout_constraintBottom_toBottomOf="@id/text_address_title"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                    <com.zobot.validationedittext.ValidationEditText
+                    <io.github.ketzalv.validationedittext.ValidationEditText
                         android:id="@+id/edit_street"
                         style="@style/EditText.Validation"
                         android:hint="Street *"
@@ -63,7 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_ext_num"
                             style="@style/EditText.Validation"
                             android:hint="Ext Num *"
@@ -73,7 +73,7 @@
                             android:layout_weight="1"
                             android:imeOptions="actionNext"
                             app:format="text"/>
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_int_num"
                             style="@style/EditText.Validation"
                             android:hint="Int Num"
@@ -84,7 +84,7 @@
                             android:layout_weight="1"
                             android:imeOptions="actionNext"
                             app:format="text"/>
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_zip_code"
                             style="@style/EditText.Validation"
                             android:hint="Postal Code *"
@@ -95,7 +95,7 @@
                             android:imeOptions="actionNext"
                             app:format="zipcode"/>
                     </LinearLayout>
-                    <com.zobot.validationedittext.ValidationEditText
+                    <io.github.ketzalv.validationedittext.ValidationEditText
                         android:id="@+id/edit_city"
                         style="@style/EditText.Validation"
                         android:hint="City *"
@@ -107,7 +107,7 @@
                         android:imeOptions="actionNext"
                         app:format="personName"/>
 
-                    <com.zobot.validationedittext.ValidationEditText
+                    <io.github.ketzalv.validationedittext.ValidationEditText
                         android:id="@+id/edit_state"
                         style="@style/EditText.Validation"
                         android:hint="State *"
@@ -156,7 +156,7 @@
                         android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question1"
                             style="@style/EditText.Validation"
                             android:hint="How old are you?"
@@ -172,7 +172,7 @@
                         android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question2"
                             style="@style/EditText.Validation"
                             android:hint="Would you like play piano?"
@@ -188,7 +188,7 @@
                         android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question3"
                             style="@style/EditText.Validation"
                             android:hint="Are you from Italia?"
@@ -204,7 +204,7 @@
                         android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question4"
                             style="@style/EditText.Validation"
                             android:hint="Do you like coffee?"
@@ -253,7 +253,7 @@
                         android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_email"
                             style="@style/EditText.Validation"
                             android:hint="email"
@@ -271,7 +271,7 @@
                         android:layout_height="wrap_content"
                         app:counterEnabled="true"
                         app:counterMaxLength="250">
-                        <com.zobot.validationedittext.ValidationEditText
+                        <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_comments"
                             style="@style/EditText.Validation"
                             android:hint="Comments"

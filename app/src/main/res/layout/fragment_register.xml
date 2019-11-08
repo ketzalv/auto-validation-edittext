@@ -29,7 +29,7 @@
                 android:layout_marginStart="@dimen/dimen_margin_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.zobot.validationedittext.ValidationEditText
+                <io.github.ketzalv.validationedittext.ValidationEditText
                     android:id="@+id/edit_username"
                     style="@style/EditText.Validation"
                     android:hint="Username"
@@ -45,7 +45,7 @@
                 android:layout_marginStart="@dimen/dimen_margin_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.zobot.validationedittext.ValidationEditText
+                <io.github.ketzalv.validationedittext.ValidationEditText
                     android:id="@+id/edit_email"
                     style="@style/EditText.Validation"
                     android:hint="Email"
@@ -61,7 +61,7 @@
                 android:layout_marginStart="@dimen/dimen_margin_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.zobot.validationedittext.ValidationEditText
+                <io.github.ketzalv.validationedittext.ValidationEditText
                     android:id="@+id/edit_name"
                     style="@style/EditText.Validation"
                     android:hint="Name"
@@ -83,7 +83,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
-                    <com.zobot.validationedittext.ValidationEditText
+                    <io.github.ketzalv.validationedittext.ValidationEditText
                         android:id="@+id/edit_lastname"
                         style="@style/EditText.Validation"
                         android:hint="LastName"
@@ -98,7 +98,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content">
-                    <com.zobot.validationedittext.ValidationEditText
+                    <io.github.ketzalv.validationedittext.ValidationEditText
                         android:id="@+id/edit_surname"
                         style="@style/EditText.Validation"
                         android:hint="SurName"
@@ -115,7 +115,7 @@
                 android:layout_marginStart="@dimen/dimen_margin_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.zobot.validationedittext.ValidationEditText
+                <io.github.ketzalv.validationedittext.ValidationEditText
                     android:id="@+id/edit_birthdate"
                     style="@style/EditText.Validation"
                     android:hint="Birthdate"
