@@ -1,6 +1,6 @@
 package io.github.ketzalv.validationedittext;
 
-enum ValidationType {
+public enum ValidationType {
 
     defaulttype(-11),
     email(0),

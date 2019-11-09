@@ -1,7 +1,8 @@
 
 
 # Auto Validation EditText
-[ ![Download](null/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.1) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.1/link)
+
+[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.2) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.2/link)
 
 Provides a custom component of Edittext, that facility create forms, and its validations, as require a little lines of code for use
 
@@ -19,7 +20,7 @@ Provides a custom component of Edittext, that facility create forms, and its val
 
 Gradle dependency:
 ```Groovy
-implementation 'io.github.ketzalv:validationedittext:1.0.1'
+implementation 'io.github.ketzalv:validationedittext:1.0.2'
 ```
 
 In XML:
@@ -46,6 +47,33 @@ In XML:
 </com.google.android.material.textfield.TextInputLayout>
 ```
 
+In Code:
+
+```JAVA
+ValidationEditText editIntNum = new ValidationEditText(getContext(), ValidationType.text);
+        editIntNum.setAutoValidateEnable(true);
+        editIntNum.setShowMessageError(true);
+        editIntNum.setEmptyMessage("Empty Field");
+        editIntNum.setErrorMessage("InvalidField");
+        editIntNum.setCustomLocale(Locale.CANADA);
+```
+
+Provides a callback when the Field is valid in realtime
+
+```JAVA
+ValidationEditText editIntNum = new ValidationEditText(getContext(), ValidationType.text);
+    editIntNum.setAutoValidate(new ValidationEditText.ValidatorListener() {
+            @Override
+            public void onValidEditText(String string) {
+                //do something...
+            }
+
+            @Override
+            public void onInvalidEditText() {
+
+            }
+        });
+```
 And you should look something like Figure 1:
 
 
@@ -55,6 +83,18 @@ And you should look something like Figure 1:
 Figure 1
 
 Check the app Sample include in this repo to see a complex form and all implementations
+
+Some Gifs of the app Sample
+
+![](images/figure_2.gif)
+
+Figure 2
+
+![](images/figure_3.gif)
+
+Figure 3
+
+
 
 ## Custom Attributes
 
@@ -66,8 +106,9 @@ The next table contains all information about of custom attributes with their de
 |  app:showErrorMessage | boolean  | This feature enable and disable auto manage when the field show the error |
 |  app:errorEmptyMessage | String  | This feature enable custom error messages in case of the field is empty |
 |  app:errorMessage | String  | This feature enable custom error messages in case of the field is not empty |
-|  app:regularExpression | String  | This feature match your current regular expression to validate the field§ |
-
+|  app:regularExpression | String  | This feature match your current regular expression to validate the field |
+|  app:minAmount | float  | This feature is only used in NumberCurreny type and NumberCurrencyRounded |
+|  app:maxAmount | float  | This feature is only used in NumberCurreny type and NumberCurrencyRounded |
 |  app:format | enum  | This feature configure the types that are supported. The types are: **email, password, phone, zipcode, text, number, cellphone, date, personName, numberCurrency, curp, numberCurrencyRounded** |
 
 
@@ -75,7 +116,7 @@ The next table contains all information about of custom attributes with their de
 
 The next table contains all information about of fields supported and their descriptions!type
 
-| type | default configuration | default validate | image example |§
+| type | default configuration | default validate | image example |
 |---|---|---|---|
 | **email** | InputType <ul><li>TYPE_CLASS_TEXT</li><li>TYPE_TEXT_VARIATION_EMAIL_ADDRESS</li></ul><br> Maxlines: 1 | <ul><li>Regular Expression: android.util.Patterns.**EMAIL_ADDRESS**</li><li>Check empty field</li></ul>|
 | **password** | InputType <ul><li>TYPE_CLASS_TEXT</li><li>TYPE_TEXT_VARIATION_PASSWORD</li></ul><br> Maxlines: 1 | <ul><li>Check empty field</li></ul> |

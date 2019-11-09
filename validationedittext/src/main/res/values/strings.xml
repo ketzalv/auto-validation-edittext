@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">validationedittext</string>
     <string name="msg_empty_edittext">Empty Field</string>
+    <string name="msg_invalid_edittext">Invalid Field</string>
+    <string name="msg_invalid_edittext_currency">Invalid amount, the min %1$s and the max %2$s amount range.</string>
+
 </resources>

@@ -17,5 +17,10 @@
         </attr>
         <attr name="autoValidate" format="boolean"/>
         <attr name="showErrorMessage" format="boolean"/>
+        <attr name="errorEmptyMessage" format="string"/>
+        <attr name="errorMessage" format="string"/>
+        <attr name="regularExpression" format="string"/>
+        <attr name="minAmount" format="float"/>
+        <attr name="maxAmount" format="float"/>
     </declare-styleable>
 </resources>
