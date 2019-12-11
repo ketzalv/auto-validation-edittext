@@ -6,6 +6,7 @@ package io.github.ketzalv.validationedittext;
  */
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -13,22 +14,23 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.View;
 
 import androidx.appcompat.widget.AppCompatEditText;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 import static io.github.ketzalv.validationedittext.ValidationUtils.parseCurrencyAmount;
 import static io.github.ketzalv.validationedittext.ValidationUtils.parseCurrencyAmountWithoutDecimal;
 
 
-public class ValidationEditText extends AppCompatEditText implements TextWatcher{
+public class ValidationEditText extends AppCompatEditText implements TextWatcher {
 
     //region Constants
     private static final int CONST_POSTAL_CODE_SIZE = 5; //MX
     private static final int CONST_CELLPHONE_SIZE = 10; //MX
     private static final int CONST_CURP_SIZE = 18;
     //endregion
-
 
 
     private ValidationType mFormatType = ValidationType.defaulttype;
@@ -97,7 +99,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
                 case zipcode:
                     this.setMaxLines(1);
-                    this.setFilters(new InputFilter[] {new InputFilter.LengthFilter(CONST_POSTAL_CODE_SIZE)});
+                    this.setFilters(new InputFilter[]{new InputFilter.LengthFilter(CONST_POSTAL_CODE_SIZE)});
                     this.setInputType(InputType.TYPE_CLASS_NUMBER);
                     break;
                 case text:
@@ -106,7 +108,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
                 case cellphone:
                     this.setMaxLines(1);
-                    this.setFilters(new InputFilter[] {new InputFilter.LengthFilter(CONST_CELLPHONE_SIZE)});
+                    this.setFilters(new InputFilter[]{new InputFilter.LengthFilter(CONST_CELLPHONE_SIZE)});
                     this.setInputType(InputType.TYPE_CLASS_PHONE);
                     break;
                 case phone:
@@ -115,7 +117,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
                 case curp:
                     this.setMaxLines(1);
-                    this.setFilters(new InputFilter[] {
+                    this.setFilters(new InputFilter[]{
                             new InputFilter.LengthFilter(CONST_CURP_SIZE), //longitud
                             new InputFilter.AllCaps()});// input mayusculas
                     this.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -159,7 +161,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
     }
 
 
-    public boolean isValidField(){
+    public boolean isValidField() {
         return validateEditText(mFormatType, mCurrentString);
     }
 
@@ -246,7 +248,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
                 case curp:
                     validField = currentString.length() == 18;
-                    if(!validField){
+                    if (!validField) {
                         errorMessage = "Invalid curp";//getContext().getString(R.string.msg_error_text_curp);
                     }
                     break;
@@ -280,8 +282,57 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
             super.setError(errorMessage);
         }
     }
+
     @Override
     public void setError(CharSequence error) {
         setErrorTextInputLayout(error);
+    }
+
+    public void setPickerOptions(final String[] options, final OptionsListener listener) {
+        if (options == null) {
+            return;
+        }
+        enablePickerMode(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertFactory.showPickerDialg(
+                        getContext(),
+                        getHint().toString(),
+                        options,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (listener != null) {
+                                    listener.onOptionSelected(ValidationEditText.this, options[which]);
+                                }
+                            }
+                        }
+                );
+            }
+        });
+    }
+
+    public void enablePickerMode(View.OnClickListener listener) {
+        setOnClickListener(listener);
+        setLongClickable(false);
+        setClickable(true);
+        setFocusable(false);
+        setInputType(InputType.TYPE_NULL);
+        setCursorVisible(false);
+        setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_more, 0);
+    }
+
+    public void disablePickerMode() {
+        setOnClickListener(null);
+        setLongClickable(true);
+        setClickable(false);
+        setFocusable(true);
+        setCursorVisible(true);
+        setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        configureType(mFormatType);
+    }
+
+    public interface OptionsListener {
+        void onOptionSelected(ValidationEditText editText, String option);
     }
 }

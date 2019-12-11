@@ -1,2 +1,2 @@
-include ':app', ':validationedittext'
+include ':sample', ':validationedittext'
 rootProject.name='Sample'

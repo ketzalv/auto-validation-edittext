@@ -5,7 +5,7 @@ android {
 
 
     defaultConfig {
-        applicationId "io.github.ketzalv.validationedittext.sample"
+        applicationId "io.github.ketzalv.validationedittext.sample.app"
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
@@ -31,6 +31,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
 
 }
