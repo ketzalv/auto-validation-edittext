@@ -184,18 +184,18 @@ The next case show how to implements OptionsMode
 
 See sample directory. Sample project contains a powerful implementation with this method, please download and see if you have a questions
 
-<img src="images/figure_1.png" height="680">
+![](images/figure_1.png =500x150)
 
 Figure 1
 
 
 Some Gifs of the app Sample
 
-![](images/figure_2.gif)
+![](images/figure_2.gif =500x150)
 
 Figure 2
 
-![](images/figure_3.gif)
+![](images/figure_3.gif =500x150)
 
 Figure 3
 
