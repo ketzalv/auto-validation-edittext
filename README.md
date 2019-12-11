@@ -4,6 +4,9 @@
 
 [ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.3) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.2/link) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext)
 
+<img src="images/figure_1.png" width="200"> <img src="images/figure_2.gif" width="200"> <img src="images/figure_3.gif" width="200"> <img src="images/figure_4.gif" width="200">
+
+
 ## Overview
 Provides a custom component of Edittext, that facility create forms, and its validations, as require a little lines of code for use
 
@@ -184,20 +187,6 @@ The next case show how to implements OptionsMode
 
 See sample directory. Sample project contains a powerful implementation with this method, please download and see if you have a questions
 
-<img src="images/figure_1.png" width="200">
-
-Figure 1
-
-
-Some Gifs of the app Sample
-
-<img src="images/figure_2.gif" width="200">
-
-Figure 2
-
-<img src="images/figure_3.gif" width="200">
-
-Figure 3
 
 ## Fields Supported
 
