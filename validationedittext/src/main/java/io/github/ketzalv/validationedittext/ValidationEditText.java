@@ -2,7 +2,7 @@ package io.github.ketzalv.validationedittext;
 /*
  * Created by Alberto Vazquez on 1/11/19 11:41 AM
  * Copyright (c) 2019. MIT License.
- * Last modified 1/11/19 11:40 AM
+ * Last modified 1112/19 01:00 PM
  */
 
 import android.content.Context;
@@ -16,6 +16,7 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -47,6 +48,14 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
     private double mMinMount = 0;
     //endregion
 
+    //region parameters
+    @DrawableRes
+    private int drawableOptions = R.drawable.ic_expand_more;
+    private String[] options;
+    private ValidationListener mAutoValidate;
+
+    //endregion
+
     //region constructors
     public ValidationEditText(Context context) {
         super(context);
@@ -74,6 +83,13 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                 mFormatType = ValidationType.fromId(typedArray.getInt(R.styleable.ValidationEditText_format, -11));
                 mIsAutoValidateEnable = typedArray.getBoolean(R.styleable.ValidationEditText_autoValidate, false);
                 mShowMessageError = typedArray.getBoolean(R.styleable.ValidationEditText_showErrorMessage, false);
+                drawableOptions = typedArray.getResourceId(R.styleable.ValidationEditText_drawableOptions, R.drawable.ic_expand_more);
+                try {
+                    int id = typedArray.getResourceId(R.styleable.ValidationEditText_options, 0);
+                    options = getResources().getStringArray(id);
+                } catch (Exception e) {
+
+                }
             } catch (Exception e) {
                 mFormatType = ValidationType.defaulttype;
             } finally {
@@ -82,6 +98,9 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
         }
         super.addTextChangedListener(this);
         configureType(mFormatType);
+        if (options != null && options.length > 0) {
+            setPickerOptions(options, null);
+        }
     }
 
     private void configureType(ValidationType mFormatType) {
@@ -254,13 +273,13 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
             }
         }
-//        if (mAutoValidate != null) {
-//            if (validField) {
-//                mAutoValidate.onValidEditText(mCurrentString);
-//            } else {
-//                mAutoValidate.onInvalidEditText();
-//            }
-//        }
+        if (mAutoValidate != null) {
+            if (validField) {
+                mAutoValidate.onValidEditText(ValidationEditText.this, mCurrentString);
+            } else {
+                mAutoValidate.onInvalidEditText(ValidationEditText.this);
+            }
+        }
         if (mShowMessageError) {
             setErrorTextInputLayout(errorMessage);
         }
@@ -302,6 +321,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                setText(options[which]);
                                 if (listener != null) {
                                     listener.onOptionSelected(ValidationEditText.this, options[which]);
                                 }
@@ -312,6 +332,15 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
         });
     }
 
+    public void setDrawableOptions(int drawableOptions) {
+        this.drawableOptions = drawableOptions;
+        setCompoundDrawablesWithIntrinsicBounds(0, 0, drawableOptions, 0);
+    }
+
+    public void removeDrawableOptions() {
+        setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    }
+
     public void enablePickerMode(View.OnClickListener listener) {
         setOnClickListener(listener);
         setLongClickable(false);
@@ -319,7 +348,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
         setFocusable(false);
         setInputType(InputType.TYPE_NULL);
         setCursorVisible(false);
-        setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand_more, 0);
+        setDrawableOptions(drawableOptions);
     }
 
     public void disablePickerMode() {
@@ -328,11 +357,21 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
         setClickable(false);
         setFocusable(true);
         setCursorVisible(true);
-        setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        removeDrawableOptions();
         configureType(mFormatType);
+    }
+
+    public void setAutoValidateListener(ValidationListener mAutoValidate) {
+        this.mAutoValidate = mAutoValidate;
     }
 
     public interface OptionsListener {
         void onOptionSelected(ValidationEditText editText, String option);
+    }
+
+    public interface ValidationListener {
+        void onValidEditText(ValidationEditText editText, String text);
+
+        void onInvalidEditText(ValidationEditText editText);
     }
 }

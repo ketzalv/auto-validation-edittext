@@ -163,7 +163,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
-                            app:format="text"/>
+                            app:format="number"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
@@ -178,7 +178,8 @@
                             android:hint="Would you like play piano?"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"/>
+                            android:imeOptions="actionNext"
+                            app:format="text"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
@@ -206,11 +207,13 @@
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question4"
                             style="@style/EditText.Validation"
-                            android:hint="Do you like coffee?"
+                            android:hint="Do you like a cup of coffee?"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
-                            app:format="text"/>
+                            app:format="text"
+                            app:drawableOptions="@drawable/ic_arrow_drop_down"
+                            app:options="@array/play_piano"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
@@ -274,7 +277,7 @@
                             android:id="@+id/edit_comments"
                             style="@style/EditText.Validation"
                             android:hint="Comments"
-                            android:gravity="start"
+                            android:gravity="top|start"
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
                             android:imeOptions="actionDone"/>
