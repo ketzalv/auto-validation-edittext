@@ -159,11 +159,13 @@
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question1"
                             style="@style/EditText.Validation"
-                            android:hint="How old are you?"
+                            android:hint="Donate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
-                            app:format="number"/>
+                            app:format="numberCurrency"
+                            app:minAmount="0.50"
+                            app:maxAmount="200"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
@@ -175,11 +177,13 @@
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question2"
                             style="@style/EditText.Validation"
-                            android:hint="Would you like play piano?"
+                            android:hint="Donate Rounded"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
-                            app:format="text"/>
+                            app:format="numberCurrencyRounded"
+                            app:minAmount="5"
+                            app:maxAmount="1000"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"

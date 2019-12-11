@@ -4,10 +4,9 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class ValidationUtils {
-    public static final Locale mexicoLocale = new Locale("es", "MX");
 
-    public static String cashFormat(double number) {
-        NumberFormat format = NumberFormat.getCurrencyInstance(mexicoLocale);
+    public static String cashFormat(Locale locale, double number) {
+        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
         try {
             return format.format(number);
         } catch (Exception e) {
@@ -15,8 +14,8 @@ public class ValidationUtils {
         }
     }
 
-    public static String cashFormat(String number) {
-        NumberFormat format = NumberFormat.getCurrencyInstance(mexicoLocale);
+    public static String cashFormat(Locale locale, String number) {
+        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
         try {
             double cast = Double.valueOf(number);
             return format.format(cast);
@@ -25,8 +24,8 @@ public class ValidationUtils {
         }
     }
 
-    public static String cashFormat(int number) {
-        NumberFormat format = NumberFormat.getCurrencyInstance(mexicoLocale);
+    public static String cashFormat(Locale locale, int number) {
+        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
         try {
             return format.format(number);
         } catch (Exception e) {
@@ -34,8 +33,8 @@ public class ValidationUtils {
         }
     }
 
-    public static String cashFormat(float number) {
-        NumberFormat format = NumberFormat.getCurrencyInstance(mexicoLocale);
+    public static String cashFormat(Locale locale, float number) {
+        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
         try {
             return format.format(number);
         } catch (Exception e) {
@@ -45,7 +44,7 @@ public class ValidationUtils {
 
     public static double parseCurrencyAmount(String aMount) {
         try {
-            String cleanString = aMount.replaceAll("[$,.]", "");
+            String cleanString = aMount.replaceAll("[^\\d.]", "").replaceAll("\\.", "");
             return Double.parseDouble(cleanString);
         } catch (Exception e) {
             return 0;
@@ -54,7 +53,7 @@ public class ValidationUtils {
 
     public static double parseCurrencyAmountWithoutDecimal(String aMount) {
         try {
-            String cleanString = aMount.replaceAll("[$,]", "");
+            String cleanString = aMount.replaceAll("[^\\d.]", "");
             String[] splitedAmount = cleanString.split("\\.");
             if(splitedAmount.length == 2){
                 String mount = splitedAmount[0];

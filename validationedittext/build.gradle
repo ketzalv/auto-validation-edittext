@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/ketzalv/auto-validation-edittext'
     gitUrl = 'https://github.com/ketzalv/auto-validation-edittext.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.2'
 
     developerId = 'ketzalv'
     developerName = 'Alberto Vazquez'
@@ -31,8 +31,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 10002
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'

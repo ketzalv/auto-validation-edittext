@@ -2,4 +2,5 @@
     <string name="app_name">Sample</string>
     <string name="accept">Accept</string>
     <string name="getdata">Data</string>
+    <string name="custom_email_message">Please type valid email</string>
 </resources>
