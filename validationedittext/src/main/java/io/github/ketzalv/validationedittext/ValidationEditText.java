@@ -200,7 +200,11 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
 
     @Override
     public Drawable getBackground() {
-        return super.getBackground();
+        Drawable background = super.getBackground();
+        if (background != null) {
+            background.clearColorFilter();
+        }
+        return background;
     }
 
     public TextInputLayout getInputLayoutContainer() {
@@ -508,7 +512,6 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
     public int getDrawableOptions() {
         return drawableOptions;
     }
-
 
 
     //endregion

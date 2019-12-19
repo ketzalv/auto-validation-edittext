@@ -2,7 +2,7 @@
 
 # Auto Validation EditText
 
-[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.3) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.2/link) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext)
+[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.4) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.4/link) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext)
 
 <img src="images/figure_2.gif" width="200"> <img src="images/figure_3.gif" width="200"> <img src="images/figure_4.gif" width="200">
 
@@ -11,6 +11,9 @@
 Provides a custom component of Edittext, that facility create forms, and its validations, as require a little lines of code for use
 
 ## Changelog
+
+Version 1.0.4
+* Fix red background color when have custom background
 
 Version 1.0.3
 * Can show a dialog with multiple options to choice like a drop down
