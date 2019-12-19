@@ -2,10 +2,11 @@ package io.github.ketzalv.validationedittext;
 /*
  * Created by Alberto Vazquez on 1/11/19 11:41 AM
  * Copyright (c) 2019. MIT License.
- * Last modified 1/11/19 11:40 AM
+ * Last modified 1112/19 01:00 PM
  */
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
@@ -14,8 +15,11 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.View;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatEditText;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Locale;
@@ -25,7 +29,7 @@ import static io.github.ketzalv.validationedittext.ValidationUtils.parseCurrency
 import static io.github.ketzalv.validationedittext.ValidationUtils.parseCurrencyAmountWithoutDecimal;
 
 
-public class ValidationEditText extends AppCompatEditText implements TextWatcher{
+public class ValidationEditText extends AppCompatEditText implements TextWatcher {
 
     //region Constants
     private static final int CONST_POSTAL_CODE_SIZE = 5; //MX
@@ -34,9 +38,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
     //endregion
 
 
-
     private ValidationType mFormatType = ValidationType.defaulttype;
-    private ValidatorListener mAutoValidate = null;
     private Locale customLocale = Locale.getDefault();
 
 
@@ -56,6 +58,14 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
     //region messages
     private String mEmptyMessage;
     private String mErrorMessage;
+    //endregion
+
+    //region parameters
+    @DrawableRes
+    private int drawableOptions = R.drawable.ic_expand_more;
+    private String[] options;
+    private OnValidationListener mAutoValidate;
+
     //endregion
 
     //region constructors
@@ -105,6 +115,13 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                 mRegularExpression = typedArray.getString(R.styleable.ValidationEditText_regularExpression);
                 mMinMount = typedArray.getFloat(R.styleable.ValidationEditText_minAmount, 0);
                 mMaxMount = typedArray.getFloat(R.styleable.ValidationEditText_maxAmount, 0);
+                drawableOptions = typedArray.getResourceId(R.styleable.ValidationEditText_drawableOptions, R.drawable.ic_expand_more);
+                try {
+                    int id = typedArray.getResourceId(R.styleable.ValidationEditText_options, 0);
+                    options = getResources().getStringArray(id);
+                } catch (Exception e) {
+
+                }
             } catch (Exception e) {
                 mFormatType = ValidationType.defaulttype;
             } finally {
@@ -113,6 +130,9 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
         }
         super.addTextChangedListener(this);
         configureType(mFormatType);
+        if (options != null && options.length > 0) {
+            setPickerOptions(options, null);
+        }
     }
 
     private void configureType(ValidationType mFormatType) {
@@ -130,7 +150,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
                 case zipcode:
                     this.setMaxLines(1);
-                    this.setFilters(new InputFilter[] {new InputFilter.LengthFilter(CONST_POSTAL_CODE_SIZE)});
+                    this.setFilters(new InputFilter[]{new InputFilter.LengthFilter(CONST_POSTAL_CODE_SIZE)});
                     this.setInputType(InputType.TYPE_CLASS_NUMBER);
                     break;
                 case text:
@@ -139,7 +159,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
                 case cellphone:
                     this.setMaxLines(1);
-                    this.setFilters(new InputFilter[] {new InputFilter.LengthFilter(CONST_CELLPHONE_SIZE)});
+                    this.setFilters(new InputFilter[]{new InputFilter.LengthFilter(CONST_CELLPHONE_SIZE)});
                     this.setInputType(InputType.TYPE_CLASS_PHONE);
                     break;
                 case phone:
@@ -148,7 +168,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
                 case curp:
                     this.setMaxLines(1);
-                    this.setFilters(new InputFilter[] {
+                    this.setFilters(new InputFilter[]{
                             new InputFilter.LengthFilter(CONST_CURP_SIZE), //longitud
                             new InputFilter.AllCaps()});// input mayusculas
                     this.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -197,7 +217,7 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
     }
 
 
-    public boolean isValidField(){
+    public boolean isValidField() {
         return validateEditText(mFormatType, mCurrentString);
     }
 
@@ -298,9 +318,9 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
         }
         if (mAutoValidate != null) {
             if (validField) {
-                mAutoValidate.onValidEditText(mCurrentString);
+                mAutoValidate.onValidEditText(ValidationEditText.this, mCurrentString);
             } else {
-                mAutoValidate.onInvalidEditText();
+                mAutoValidate.onInvalidEditText(ValidationEditText.this);
             }
         }
         if (mShowMessageError) {
@@ -324,20 +344,77 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
             super.setError(errorMessage);
         }
     }
+
     @Override
     public void setError(CharSequence error) {
         setErrorTextInputLayout(error);
     }
 
+    public void setPickerOptions(final String[] options, final OptionsListener listener) {
+        if (options == null) {
+            return;
+        }
+        enablePickerMode(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertFactory.showPickerDialg(
+                        getContext(),
+                        getHint().toString(),
+                        options,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                setText(options[which]);
+                                if (listener != null) {
+                                    listener.onOptionSelected(ValidationEditText.this, options[which]);
+                                }
+                            }
+                        }
+                );
+            }
+        });
+    }
+
+    public void setDrawableOptions(int drawableOptions) {
+        this.drawableOptions = drawableOptions;
+        setCompoundDrawablesWithIntrinsicBounds(0, 0, drawableOptions, 0);
+    }
+
+    public void removeDrawableOptions() {
+        setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    }
+
+    public void enablePickerMode(View.OnClickListener listener) {
+        setOnClickListener(listener);
+        setLongClickable(false);
+        setClickable(true);
+        setFocusable(false);
+        setInputType(InputType.TYPE_NULL);
+        setCursorVisible(false);
+        setDrawableOptions(drawableOptions);
+    }
+
+    public void disablePickerMode() {
+        setOnClickListener(null);
+        setLongClickable(true);
+        setClickable(false);
+        setFocusable(true);
+        setCursorVisible(true);
+        removeDrawableOptions();
+        configureType(mFormatType);
+    }
+
+    public interface OptionsListener {
+        void onOptionSelected(ValidationEditText editText, String option);
+    }
+
+    public interface OnValidationListener {
+        void onValidEditText(ValidationEditText editText, String text);
+
+        void onInvalidEditText(ValidationEditText editText);
+    }
+
     //region Getters&Setters
-
-    public ValidatorListener getAutoValidate() {
-        return mAutoValidate;
-    }
-
-    public void setAutoValidate(ValidatorListener mAutoValidate) {
-        this.mAutoValidate = mAutoValidate;
-    }
 
     public boolean isAutoValidateEnable() {
         return mIsAutoValidateEnable;
@@ -345,6 +422,10 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
 
     public void setAutoValidateEnable(boolean mIsAutoValidateEnable) {
         this.mIsAutoValidateEnable = mIsAutoValidateEnable;
+    }
+
+    public void setOnValidationListener(OnValidationListener mAutoValidate) {
+        this.mAutoValidate = mAutoValidate;
     }
 
     public boolean isShowMessageError() {
@@ -424,10 +505,11 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
         }
     }
 
-    //endregion
-
-    public interface ValidatorListener {
-        void onValidEditText(String string);
-        void onInvalidEditText();
+    public int getDrawableOptions() {
+        return drawableOptions;
     }
+
+
+
+    //endregion
 }

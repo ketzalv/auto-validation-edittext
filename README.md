@@ -2,12 +2,23 @@
 
 # Auto Validation EditText
 
-[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.2) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.2/link)
+[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.3) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.2/link) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext)
 
+<img src="images/figure_2.gif" width="200"> <img src="images/figure_3.gif" width="200"> <img src="images/figure_4.gif" width="200">
+
+
+## Overview
 Provides a custom component of Edittext, that facility create forms, and its validations, as require a little lines of code for use
 
-### Features
+## Changelog
 
+Version 1.0.3
+* Can show a dialog with multiple options to choice like a drop down
+* Can modify the drawableEnd that shows when is enable OptionsMode
+* updated interface of callbacks when is enable autovalidate in realtime
+* SampleApp updated with more examples
+
+Version 1.0.2
 * Validate in realtime the current regular expression
 * Automatic configuration of field need, for example the correct keyboard
 * Provides methods to validate in code
@@ -15,24 +26,37 @@ Provides a custom component of Edittext, that facility create forms, and its val
 * Can modify like Edittext with styles or attributes
 * Provide a little personalization layout in specific fields for example in numberCurrency type the User Experience required the pattern $0,000.00 and show it
 
-
-## How to Use
+## Install
 
 Gradle dependency:
 ```Groovy
-implementation 'io.github.ketzalv:validationedittext:1.0.2'
+implementation 'io.github.ketzalv:validationedittext:1.0.3'
 ```
 
-In XML:
+Maven dependency:
+```XML
+<dependency>
+  <groupId>io.github.ketzalv</groupId>
+  <artifactId>validationedittext</artifactId>
+  <version>1.0.3</version>
+  <type>pom</type>
+</dependency>
+```
+## Proguard
+it isn't necesary exclude something 
+
+
+## Usage
+
+The next section explains how to use this, if you are need to see running this feel free of download the repo and run the sample
+
+##### In XML:
+
+You can use Edittext alone or inside in TextInputLayout
+
+In this example you can see a Edittext of email field, with autovalidate enabled and automatic show errors in realtime
 
 ```XML
-<com.google.android.material.textfield.TextInputLayout
-    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
     <io.github.ketzalv.validationedittext.ValidationEditText
         android:id="@+id/edit_email"
         android:hint="Email"
@@ -44,61 +68,59 @@ In XML:
         app:autoValidate="true"
         app:showErrorMessage="true"
         app:format="email"/>
+```
+
+if you want to validate a specific pattern can do something like this:
+
+```XML
+ <com.google.android.material.textfield.TextInputLayout
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    app:passwordToggleEnabled="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <io.github.ketzalv.validationedittext.ValidationEditText
+        android:id="@+id/edit_password"
+        style="@style/EditText.Validation"
+        android:hint="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        app:format="password"
+        app:regularExpression="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"
+        app:errorEmptyMessage="Empty Password"
+        app:errorMessage="Please type password with at lease one Cap letter, one number and minim 8 characters"/>
+</com.google.android.material.textfield.TextInputLayout>
+```
+To show a Edittext with options in xml, and replace drawable at the end of view if is needed.
+
+```XML
+<com.google.android.material.textfield.TextInputLayout
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <io.github.ketzalv.validationedittext.ValidationEditText
+        android:id="@+id/edit_question4"
+        android:hint="Do you like a cup of coffee?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        app:autoValidate="true"
+        app:showErrorMessage="true"
+        app:format="text"
+        app:drawableOptions="@drawable/ic_arrow_drop_down"
+        app:options="@array/play_piano"/>
 </com.google.android.material.textfield.TextInputLayout>
 ```
 
-In Code:
-
-```JAVA
-ValidationEditText editIntNum = new ValidationEditText(getContext(), ValidationType.text);
-        editIntNum.setAutoValidateEnable(true);
-        editIntNum.setShowMessageError(true);
-        editIntNum.setEmptyMessage("Empty Field");
-        editIntNum.setErrorMessage("InvalidField");
-        editIntNum.setCustomLocale(Locale.CANADA);
-```
-
-Provides a callback when the Field is valid in realtime
-
-```JAVA
-ValidationEditText editIntNum = new ValidationEditText(getContext(), ValidationType.text);
-    editIntNum.setAutoValidate(new ValidationEditText.ValidatorListener() {
-            @Override
-            public void onValidEditText(String string) {
-                //do something...
-            }
-
-            @Override
-            public void onInvalidEditText() {
-
-            }
-        });
-```
-And you should look something like Figure 1:
-
-
-
-<img src="images/figure_1.png" height="680">
-
-Figure 1
-
-Check the app Sample include in this repo to see a complex form and all implementations
-
-Some Gifs of the app Sample
-
-![](images/figure_2.gif)
-
-Figure 2
-
-![](images/figure_3.gif)
-
-Figure 3
-
-
-
-## Custom Attributes
 
 The next table contains all information about of custom attributes with their description
+
 
 | name  | type | description |
 |---|---|---|
@@ -109,12 +131,67 @@ The next table contains all information about of custom attributes with their de
 |  app:regularExpression | String  | This feature match your current regular expression to validate the field |
 |  app:minAmount | float  | This feature is only used in NumberCurreny type and NumberCurrencyRounded |
 |  app:maxAmount | float  | This feature is only used in NumberCurreny type and NumberCurrencyRounded |
-|  app:format | enum  | This feature configure the types that are supported. The types are: **email, password, phone, zipcode, text, number, cellphone, date, personName, numberCurrency, curp, numberCurrencyRounded** |
+|  app:format | reference  | This feature configure the types that are supported. The types are: **email, password, phone, zipcode, text, number, cellphone, date, personName, numberCurrency, curp, numberCurrencyRounded** |
+|  app:options | reference  | This feature enable the edittext to show a dialog with list of options to choice, and enable callback for it |
+|  app:drawableOptions | reference  | This feature provides option of replace a default icon of show when the OptionsMode is enabled |
 
+
+
+##### In Java:
+
+You can create this view, similar others views with the setters methods provided is the same case like xml
+
+In this case we create a validation edittext and configure for NumberCurrency, and listen the events related with validation
+```JAVA
+ValidationEditText validationEditText = new ValidationEditText(getActivity(), ValidationType.numberCurrency);
+        validationEditText.setAutoValidateEnable(true);
+        validationEditText.setShowMessageError(true);
+        validationEditText.setHint("Type amount");
+        validationEditText.setEmptyMessage("Empty Field");
+        validationEditText.setErrorMessage("InvalidField");
+        validationEditText.setCustomLocale(Locale.CANADA);
+        validationEditText.setOnValidationListener(new ValidationEditText.OnValidationListener() {
+            @Override
+            public void onValidEditText(ValidationEditText editText, String text) {
+                Toast.makeText(getActivity(), "Text valid typed -> " + text, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onInvalidEditText(ValidationEditText editText) {
+                Toast.makeText(getActivity(), "Edittext invalid -> " + editText.getHint(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+```
+
+The next case show how to implements OptionsMode
+```JAVA
+    private void setupOptionsEdittext(LinearLayout view){
+        ValidationEditText validationEditText = new ValidationEditText(getActivity(), ValidationType.text);
+        validationEditText.setAutoValidateEnable(true);
+        validationEditText.setShowMessageError(true);
+        validationEditText.setHint("Do you like a coffee?");
+        validationEditText.setEmptyMessage("Empty Field");
+        validationEditText.setErrorMessage("Invalid Response");
+        validationEditText.setPickerOptions(new String[]{"Yes", "No", "Maybe"}, new ValidationEditText.OptionsListener() {
+            @Override
+            public void onOptionSelected(ValidationEditText editText, String option) {
+                Toast.makeText(getActivity(), "Text valid typed -> " + option, Toast.LENGTH_SHORT).show();
+            }
+        });
+        view.addView(validationEditText);
+    }
+```
+
+#### Sample project
+
+See sample directory. Sample project contains a powerful implementation with this method, please download and see if you have a questions
+
+<img src="images/figure_1.png" width="200"> 
 
 ## Fields Supported
 
-The next table contains all information about of fields supported and their descriptions!type
+The next table contains all information about of fields supported and their descriptions
 
 | type | default configuration | default validate | image example |
 |---|---|---|---|

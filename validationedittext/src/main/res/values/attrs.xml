@@ -22,5 +22,7 @@
         <attr name="regularExpression" format="string"/>
         <attr name="minAmount" format="float"/>
         <attr name="maxAmount" format="float"/>
+        <attr name="options" format="reference"/>
+        <attr name="drawableOptions" format="reference"/>
     </declare-styleable>
 </resources>

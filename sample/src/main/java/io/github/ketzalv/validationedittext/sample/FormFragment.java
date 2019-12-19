@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,8 +13,10 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import io.github.ketzalv.validationedittext.ValidationEditText;
+import io.github.ketzalv.validationedittext.ValidationType;
 import io.github.ketzalv.validationedittext.sample.base.BaseFragment;
 import io.github.ketzalv.validationedittext.sample.utils.AlertUtils;
 
@@ -65,9 +69,20 @@ public class FormFragment extends BaseFragment implements View.OnClickListener {
         if(!questionsRequiredFields.isEmpty()){
             questionsRequiredFields.clear();
         }
+        ValidationEditText editQuestion2 = view.findViewById(R.id.edit_question2);
+        editQuestion2.setPickerOptions(new String[]{"Yes", "No", "Other day"}, new ValidationEditText.OptionsListener() {
+            @Override
+            public void onOptionSelected(ValidationEditText editText, String option) {
+                Toast.makeText(getActivity(), "Option: " + option + " Selected", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ValidationEditText editQuestion3 = view.findViewById(R.id.edit_question3);
+        editQuestion3.setPickerOptions(new String[]{"Yes I'm from Italia", "Not i'm from Germany"}, null);
+
         questionsRequiredFields.add((ValidationEditText) view.findViewById(R.id.edit_question1));
-        questionsRequiredFields.add((ValidationEditText) view.findViewById(R.id.edit_question2));
-        questionsRequiredFields.add((ValidationEditText) view.findViewById(R.id.edit_question3));
+        questionsRequiredFields.add(editQuestion2);
+        questionsRequiredFields.add(editQuestion3);
         questionsRequiredFields.add((ValidationEditText) view.findViewById(R.id.edit_question4));
 
         if(!contactRequiredFields.isEmpty()){
@@ -177,5 +192,43 @@ public class FormFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public String getFragmentTag() {
         return TAG;
+    }
+
+    private void setupEdittextProgramatically(){
+        ValidationEditText validationEditText = new ValidationEditText(getActivity(), ValidationType.numberCurrency);
+        validationEditText.setAutoValidateEnable(true);
+        validationEditText.setShowMessageError(true);
+        validationEditText.setHint("Type amount");
+        validationEditText.setEmptyMessage("Empty Field");
+        validationEditText.setErrorMessage("InvalidField");
+        validationEditText.setCustomLocale(Locale.CANADA);
+        validationEditText.setOnValidationListener(new ValidationEditText.OnValidationListener() {
+            @Override
+            public void onValidEditText(ValidationEditText editText, String text) {
+                Toast.makeText(getActivity(), "Text valid typed -> " + text, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onInvalidEditText(ValidationEditText editText) {
+                Toast.makeText(getActivity(), "Edittext invalid -> " + editText.getHint(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    private void setupOptionsEdittext(LinearLayout view){
+        ValidationEditText validationEditText = new ValidationEditText(getActivity(), ValidationType.text);
+        validationEditText.setAutoValidateEnable(true);
+        validationEditText.setShowMessageError(true);
+        validationEditText.setHint("Do you like a coffee?");
+        validationEditText.setEmptyMessage("Empty Field");
+        validationEditText.setErrorMessage("Invalid Response");
+        validationEditText.setPickerOptions(new String[]{"Yes", "No", "Maybe"}, new ValidationEditText.OptionsListener() {
+            @Override
+            public void onOptionSelected(ValidationEditText editText, String option) {
+                Toast.makeText(getActivity(), "Text valid typed -> " + option, Toast.LENGTH_SHORT).show();
+            }
+        });
+        view.addView(validationEditText);
     }
 }

@@ -55,7 +55,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
-                    app:format="password"/>
+                    app:format="password"
+                    app:regularExpression="((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})"
+                    app:errorEmptyMessage="Empty Password"
+                    app:errorMessage="Please type password with at lease one Cap letter, one number and minim 8 characters"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
