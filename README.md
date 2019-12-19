@@ -33,7 +33,7 @@ Version 1.0.2
 
 Gradle dependency:
 ```Groovy
-implementation 'io.github.ketzalv:validationedittext:1.0.3'
+implementation 'io.github.ketzalv:validationedittext:1.0.4'
 ```
 
 Maven dependency:
@@ -41,7 +41,7 @@ Maven dependency:
 <dependency>
   <groupId>io.github.ketzalv</groupId>
   <artifactId>validationedittext</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <type>pom</type>
 </dependency>
 ```
