@@ -198,15 +198,6 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
         return super.getHint();
     }
 
-    @Override
-    public Drawable getBackground() {
-        Drawable background = super.getBackground();
-        if (background != null) {
-            background.clearColorFilter();
-        }
-        return background;
-    }
-
     public TextInputLayout getInputLayoutContainer() {
         if (this.getParent() != null) {
             if (this.getParent() instanceof TextInputLayout) {
