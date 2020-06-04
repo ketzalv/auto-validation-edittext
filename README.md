@@ -13,7 +13,7 @@ Provides a custom component of Edittext, that facility create forms, and its val
 ## Changelog
 
 Version 1.0.5
-* Fix several bug§
+* Fix several bugs
 
 Version 1.0.3
 * Can show a dialog with multiple options to choice like a drop down
