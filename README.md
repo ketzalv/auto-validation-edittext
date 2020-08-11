@@ -2,7 +2,7 @@
 
 # Auto Validation EditText
 
-[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.5) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.5/link) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext)
+[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.6) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.5/link) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext)
 
 <img src="images/figure_2.gif" width="200"> <img src="images/figure_3.gif" width="200"> <img src="images/figure_4.gif" width="200">
 
@@ -11,6 +11,11 @@
 Provides a custom component of Edittext, that facility create forms, and its validations, as require a little lines of code for use
 
 ## Changelog
+
+Version 1.0.6
+* Fix bug related with typeface in input password
+* Fix bugs in sample
+* Update gradle version
 
 Version 1.0.5
 * Fix several bug§
@@ -29,11 +34,15 @@ Version 1.0.2
 * Can modify like Edittext with styles or attributes
 * Provide a little personalization layout in specific fields for example in numberCurrency type the User Experience required the pattern $0,000.00 and show it
 
+## Requirements
+
+* Project migrated or implemented *AndroidX components*
+
 ## Install
 
 Gradle dependency:
 ```Groovy
-implementation 'io.github.ketzalv:validationedittext:1.0.5'
+implementation 'io.github.ketzalv:validationedittext:1.0.6'
 ```
 
 Maven dependency:
@@ -41,7 +50,7 @@ Maven dependency:
 <dependency>
   <groupId>io.github.ketzalv</groupId>
   <artifactId>validationedittext</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <type>pom</type>
 </dependency>
 ```

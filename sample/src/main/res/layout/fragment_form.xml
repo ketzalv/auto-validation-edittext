@@ -1,302 +1,332 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <androidx.cardview.widget.CardView
                 style="@style/Base.CardView"
-                android:layout_marginTop="@dimen/dimen_margin_xl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_margin_xl">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:id="@+id/text_address_title"
                             style="@style/TextAppearance.MaterialComponents.Headline5"
-                            android:text="Address Form"
-                            android:layout_marginStart="@dimen/dimen_margin_medium"
-                            android:layout_marginEnd="@dimen/dimen_margin_medium"
-                            android:layout_marginTop="@dimen/dimen_margin_large"
-                            android:padding="@dimen/dimen_padding_small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_margin_medium"
+                            android:layout_marginTop="@dimen/dimen_margin_large"
+                            android:layout_marginEnd="@dimen/dimen_margin_medium"
+                            android:padding="@dimen/dimen_padding_small"
+                            android:text="Address Form"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             style="@style/TextAppearance.MaterialComponents.Overline"
-                            android:text="* Required Fields"
-                            android:layout_marginEnd="@dimen/dimen_margin_medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimen_margin_medium"
+                            android:text="* Required Fields"
+                            app:layout_constraintBottom_toBottomOf="@id/text_address_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/text_address_title"
-                            app:layout_constraintBottom_toBottomOf="@id/text_address_title"/>
+                            app:layout_constraintTop_toTopOf="@id/text_address_title" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <io.github.ketzalv.validationedittext.ValidationEditText
                         android:id="@+id/edit_street"
                         style="@style/EditText.Validation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium"
                         android:hint="Street *"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:format="text"
-                        android:imeOptions="actionNext"/>
+                        android:imeOptions="actionNext"
+                        app:format="text" />
+
                     <LinearLayout
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium"
                         android:orientation="horizontal">
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_ext_num"
                             style="@style/EditText.Validation"
-                            android:hint="Ext Num *"
-                            android:layout_marginEnd="@dimen/dimen_margin_small"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dimen_margin_small"
                             android:layout_weight="1"
+                            android:hint="Ext Num *"
                             android:imeOptions="actionNext"
-                            app:format="text"/>
+                            app:format="text" />
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_int_num"
                             style="@style/EditText.Validation"
-                            android:hint="Int Num"
-                            android:layout_marginStart="@dimen/dimen_margin_small"
-                            android:layout_marginEnd="@dimen/dimen_margin_small"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_margin_small"
+                            android:layout_marginEnd="@dimen/dimen_margin_small"
                             android:layout_weight="1"
+                            android:hint="Int Num"
                             android:imeOptions="actionNext"
-                            app:format="text"/>
+                            app:format="text" />
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_zip_code"
                             style="@style/EditText.Validation"
-                            android:hint="Postal Code *"
-                            android:layout_marginStart="@dimen/dimen_margin_small"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_margin_small"
                             android:layout_weight="1"
+                            android:hint="Postal Code *"
                             android:imeOptions="actionNext"
-                            app:format="zipcode"/>
+                            app:format="zipcode" />
                     </LinearLayout>
+
                     <io.github.ketzalv.validationedittext.ValidationEditText
                         android:id="@+id/edit_city"
                         style="@style/EditText.Validation"
-                        android:hint="City *"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium"
+                        android:hint="City *"
                         android:imeOptions="actionNext"
-                        app:format="personName"/>
+                        app:format="personName" />
 
                     <io.github.ketzalv.validationedittext.ValidationEditText
                         android:id="@+id/edit_state"
                         style="@style/EditText.Validation"
-                        android:hint="State *"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium"
+                        android:hint="State *"
                         android:imeOptions="actionDone"
-                        app:format="personName"/>
+                        app:format="personName" />
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_add_address"
                         style="@style/Button"
-                        android:layout_marginTop="@dimen/dimen_margin_xl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_xl"
                         android:layout_marginEnd="@dimen/dimen_margin_medium"
                         android:layout_marginBottom="@dimen/dimen_margin_medium"
-                        android:text="Add Address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:text="Add Address" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 style="@style/Base.CardView"
-                android:layout_marginTop="@dimen/dimen_margin_xl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_margin_xl">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:text="Questions Form"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_marginTop="@dimen/dimen_margin_large"
-                        android:padding="@dimen/dimen_padding_small"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_large"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium"
+                        android:padding="@dimen/dimen_padding_small"
+                        android:text="Questions Form" />
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium">
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question1"
                             style="@style/EditText.Validation"
-                            android:hint="Donate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Donate"
                             android:imeOptions="actionNext"
                             app:format="numberCurrency"
-                            app:minAmount="0.50"
-                            app:maxAmount="200"/>
+                            app:maxAmount="200"
+                            app:minAmount="0.50" />
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium">
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question2"
                             style="@style/EditText.Validation"
-                            android:hint="Donate Rounded"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Donate Rounded"
                             android:imeOptions="actionNext"
                             app:format="numberCurrencyRounded"
-                            app:minAmount="5"
-                            app:maxAmount="1000"/>
+                            app:maxAmount="1000"
+                            app:minAmount="5" />
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium">
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question3"
                             style="@style/EditText.Validation"
-                            android:hint="Are you from Italia?"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Are you from Italia?"
                             android:imeOptions="actionNext"
-                            app:format="text"/>
+                            app:format="text" />
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium">
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_question4"
                             style="@style/EditText.Validation"
-                            android:hint="Do you like a cup of coffee?"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Do you like a cup of coffee?"
                             android:imeOptions="actionNext"
-                            app:format="text"
                             app:drawableOptions="@drawable/ic_arrow_drop_down"
-                            app:options="@array/play_piano"/>
+                            app:format="text"
+                            app:options="@array/play_piano" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_add_form"
                         style="@style/Button"
-                        android:layout_marginTop="@dimen/dimen_margin_xl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_xl"
                         android:layout_marginEnd="@dimen/dimen_margin_medium"
                         android:layout_marginBottom="@dimen/dimen_margin_medium"
-                        android:text="Add Form"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:text="Add Form" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 style="@style/Base.CardView"
-                android:layout_marginTop="@dimen/dimen_margin_xl"
-                android:layout_marginBottom="@dimen/dimen_margin_xl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_margin_xl"
+                android:layout_marginBottom="@dimen/dimen_margin_xl">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:text="Contact Form"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_marginTop="@dimen/dimen_margin_large"
-                        android:padding="@dimen/dimen_padding_small"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_large"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium"
+                        android:padding="@dimen/dimen_padding_small"
+                        android:text="Contact Form" />
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium">
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_email"
                             style="@style/EditText.Validation"
-                            android:hint="email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="email"
                             android:imeOptions="actionNext"
-                            app:format="email"/>
+                            app:format="email" />
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/InputLayoutOutlined"
-                        android:layout_marginTop="@dimen/dimen_margin_medium"
-                        android:layout_marginEnd="@dimen/dimen_margin_medium"
-                        android:layout_marginStart="@dimen/dimen_margin_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_medium"
+                        android:layout_marginEnd="@dimen/dimen_margin_medium"
                         app:counterEnabled="true"
                         app:counterMaxLength="250">
+
                         <io.github.ketzalv.validationedittext.ValidationEditText
                             android:id="@+id/edit_comments"
                             style="@style/EditText.Validation"
-                            android:hint="Comments"
-                            android:gravity="top|start"
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
-                            android:imeOptions="actionDone"/>
+                            android:gravity="top|start"
+                            android:hint="Comments"
+                            android:imeOptions="actionDone" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_send_comments"
                         style="@style/Button"
-                        android:layout_marginTop="@dimen/dimen_margin_xl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_margin_medium"
+                        android:layout_marginTop="@dimen/dimen_margin_xl"
                         android:layout_marginEnd="@dimen/dimen_margin_medium"
                         android:layout_marginBottom="@dimen/dimen_margin_medium"
-                        android:text="Send"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:text="Send" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

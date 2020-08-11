@@ -46,6 +46,7 @@
                 android:layout_marginStart="@dimen/dimen_margin_medium"
                 android:layout_marginTop="@dimen/dimen_margin_medium"
                 app:passwordToggleEnabled="true"
+                app:errorIconDrawable="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <io.github.ketzalv.validationedittext.ValidationEditText
