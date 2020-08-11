@@ -8,7 +8,7 @@ package io.github.ketzalv.validationedittext;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
+import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -179,8 +179,9 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                     break;
                 case password:
                     this.setMaxLines(1);
-                    this.setInputType(InputType.TYPE_CLASS_TEXT |
-                            InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    Typeface cache = this.getTypeface();
+                    this.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    this.setTypeface(cache);
                     break;
                 case date:
                     this.setMaxLines(1);

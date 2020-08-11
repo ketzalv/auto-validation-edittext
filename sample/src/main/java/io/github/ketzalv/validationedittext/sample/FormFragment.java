@@ -70,12 +70,6 @@ public class FormFragment extends BaseFragment implements View.OnClickListener {
             questionsRequiredFields.clear();
         }
         ValidationEditText editQuestion2 = view.findViewById(R.id.edit_question2);
-        editQuestion2.setPickerOptions(new String[]{"Yes", "No", "Other day"}, new ValidationEditText.OptionsListener() {
-            @Override
-            public void onOptionSelected(ValidationEditText editText, String option) {
-                Toast.makeText(getActivity(), "Option: " + option + " Selected", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         ValidationEditText editQuestion3 = view.findViewById(R.id.edit_question3);
         editQuestion3.setPickerOptions(new String[]{"Yes I'm from Italia", "Not i'm from Germany"}, null);
