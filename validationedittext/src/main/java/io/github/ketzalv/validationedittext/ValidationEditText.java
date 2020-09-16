@@ -118,7 +118,9 @@ public class ValidationEditText extends AppCompatEditText implements TextWatcher
                 drawableOptions = typedArray.getResourceId(R.styleable.ValidationEditText_drawableOptions, R.drawable.ic_expand_more);
                 try {
                     int id = typedArray.getResourceId(R.styleable.ValidationEditText_options, 0);
-                    options = getResources().getStringArray(id);
+                    if (id != 0) {
+                        options = getResources().getStringArray(id);
+                    }
                 } catch (Exception e) {
 
                 }
