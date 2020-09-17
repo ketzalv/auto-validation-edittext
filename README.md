@@ -2,7 +2,7 @@
 
 # Auto Validation EditText
 
-[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.6) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.5/link) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext)
+[ ![Download](https://api.bintray.com/packages/ketzalv/android-utils/validationedittext/images/download.svg?version=1.0.8) ](https://bintray.com/ketzalv/android-utils/validationedittext/1.0.8/link) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.ketzalv/validationedittext)
 
 <img src="images/figure_2.gif" width="200"> <img src="images/figure_3.gif" width="200"> <img src="images/figure_4.gif" width="200">
 
@@ -42,7 +42,7 @@ Version 1.0.2
 
 Gradle dependency:
 ```Groovy
-implementation 'io.github.ketzalv:validationedittext:1.0.6'
+implementation 'io.github.ketzalv:validationedittext:1.0.8'
 ```
 
 Maven dependency:
@@ -50,7 +50,7 @@ Maven dependency:
 <dependency>
   <groupId>io.github.ketzalv</groupId>
   <artifactId>validationedittext</artifactId>
-  <version>1.0.6</version>
+  <version>1.0.8</version>
   <type>pom</type>
 </dependency>
 ```
