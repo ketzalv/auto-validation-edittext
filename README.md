@@ -12,6 +12,9 @@ Provides a custom component of Edittext, that facility create forms, and its val
 
 ## Changelog
 
+Version 1.0.8
+* Fix bug about of render
+
 Version 1.0.6
 * Fix bug related with typeface in input password
 * Fix bugs in sample
